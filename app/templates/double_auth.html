@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %} 
+        <div class = "container">
+            <h1 class = "text-center">Double authorization</h1>
+            <p class = "text-center">Ми надіслали вам код на пошту</p>
+            <form method="POST" action="{{ url_for('me')}}">
+                {{ form.csrf_token }}
+                {{ render_field_group( form.code ) }}
+                {{ form.submit(class_ ="btn btn-success", style = "margin-top: 20px;") }}
+                {{ flash_message() }}   
+            </form>
+        </div>
+{% endblock %}
